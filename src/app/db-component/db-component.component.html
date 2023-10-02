@@ -1,0 +1,59 @@
+<div class="main-content">
+  <div>
+    <h3>Node Creation</h3><br>
+    <mat-form-field>
+      <input matInput type="text" [(ngModel)]="newNodeName" placeholder="Enter a name" (input)="updatePredictivePaths()">
+    </mat-form-field>
+    <button class="button green-button" (click)="createNewNode(true)"> Add New Root Node </button>
+    <ng-container *ngIf="lastNodeDownloaded.node_id != -1">
+    <button class="button green-button" (click)="createNewNode(false)"> Add New Child Node </button>
+    </ng-container>
+  </div>
+  <div>
+    <h3>Node Editing</h3>
+    <mat-form-field>
+      <input matInput type="text" [(ngModel)]="selectedNodePath" placeholder="Enter a node path" (input)="updatePredictivePaths()">
+    </mat-form-field>
+
+    <mat-form-field>
+      <mat-select [(ngModel)]="selectedNodePath">
+        <mat-option *ngFor="let path of nodePaths" [value]="path">{{ path }}</mat-option>
+      </mat-select>
+    </mat-form-field>
+
+    <button class="button green-button" (click)="getNodeFromPath()"> Get Node </button>
+  </div>
+
+  <ng-container *ngIf="lastNodeDownloaded.node_id != -1">
+  <br>
+    <div class="settings-window">
+      <h4> Edit Node: {{lastNodeDownloaded.name}} </h4>
+
+      <div *ngIf="lastNodeDownloaded.node_id >= 0">
+        <h3>{{ lastNodeDownloaded.name }}</h3>
+        <div *ngFor="let property of lastNodeDownloaded.property | keyvalue">
+          <div>
+            {{ property.key }} :
+            <input matInput type="text" [(ngModel)]="property.value">
+          </div>
+        </div>
+        <div>
+          <input matInput type="text" [(ngModel)]="newPropertyLabel"> : <input matInput type="text" [(ngModel)]="newPropertyValue">
+          <button class="button blue-button" (click)="addPropertyLocally()"> Add Property </button>
+        </div>
+      </div>
+
+      <button class="button red-button" (click)="deleteNode(lastNodeDownloaded.node_id)"> Delete </button>
+      <button class="button yellow-button" (click)="updateNode()"> Update </button>
+    </div>
+  </ng-container>
+
+  <div>
+    <ng-container *ngFor="let item of dataFromDb.split('\n')">
+      <h3 *ngIf="item.startsWith('*')">{{ item.substring(1) }} </h3>
+    <ul *ngIf="!item.startsWith('*') && item.length > 0">
+      <li>{{ item }}</li>
+    </ul>
+    </ng-container>
+  </div>
+</div>

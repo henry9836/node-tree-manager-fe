@@ -1,0 +1,26 @@
+<div class="main-content">
+  <mat-form-field>
+    <mat-select [(ngModel)]="selectedRootNode" (selectionChange)="onRootNodeSelectionChanged()">
+      <mat-option *ngFor="let rootNode of rootNodes" [value]="rootNode">{{ rootNode.name }}</mat-option>
+    </mat-select>
+  </mat-form-field>
+
+  <ng-container *ngIf="nodeTreeData.length > 0">
+    <button class="button blue-button" (click)="getNodeTree()"> Refresh Nodes </button>
+  </ng-container>
+
+  <ng-container *ngIf="selectedNode.node_id >= 0">
+    <div class="node-bubble">
+      <h3> {{selectedNode.name}} </h3>
+      Created: {{selectedNode.date_created | timeSinceCreatedPipe}}<br>
+      <div *ngFor="let property of selectedNode.property | keyvalue">
+        <div [ngStyle]="{'color': isGreenProperty(property.value) ? 'green' : ''}">
+          {{ property.key }}: {{ property.value }}<br>
+        </div>
+      </div>
+    </div>
+  </ng-container>
+</div>
+
+<div #visNetwork style="height: 100vh">
+</div>
