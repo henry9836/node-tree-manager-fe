@@ -1,7 +1,7 @@
 ### Developer Notes
 ![Preview of Application](https://raw.githubusercontent.com/henry9836/node-tree-manager-fe/master/git-resource/preview.gif)
 
-![Backend Source](https://github.com/henry9836/node-tree-manager-be)
+[Backend Source](https://github.com/henry9836/node-tree-manager-be)
 
 #### Build and Test
 Build/Run:
