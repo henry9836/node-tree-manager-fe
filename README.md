@@ -1,5 +1,5 @@
 ### Developer Notes
-![Preview of Application]([https://gitlab.com/rocketlabusa/business-automation/flame-recruitment/henry-oliver-fe/-/raw/pesudo-main/git-resource/preview.gif?ref_type=heads](https://github.com/henry9836/node-tree-manager-fe/blob/master/git-resource/preview.gif))
+![Preview of Application](https://raw.githubusercontent.com/henry9836/node-tree-manager-fe/master/git-resource/preview.gif)
 
 #### Build and Test
 Build/Run:
